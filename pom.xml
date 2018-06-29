@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.caiw</groupId>
+    <artifactId>big_data</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spark</module>
+        <module>pythondemo</module>
+        <module>elasticsearch</module>
+        <module>go_demo</module>
+        <module>mr</module>
+        <module>Kafka_demo</module>
+        <module>java_demo</module>
+        <module>storm_demo</module>
+        <module>Phoenix</module>
+        <module>Netty</module>
+        <module>test_demo</module>
+        <module>db_demo</module>
+        <module>jsoup_demo</module>
+        <module>HBase_demo</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+    </dependencies>
+
+</project>
