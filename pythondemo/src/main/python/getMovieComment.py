@@ -10,6 +10,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from urllib import request
 from bs4 import BeautifulSoup as bs
+import urllib.parse
 # %matplotlib inline
 
 import matplotlib
@@ -32,9 +33,33 @@ def getNowPlayingMovie_list():
             nowplaying_list.append(nowplaying_dict)
     return nowplaying_list
 
+
+def getMovieIdByName():
+    name = input("输入电影名：")
+    # name = '钢铁侠'
+    name = '豆瓣  ' + name
+    name = urllib.parse.quote(name)
+    nameUrl = 'http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd=' + name + '&oq=%25E8%25B1%2586%25E7%2593%25A3%2520%25E8%259C%2598%25E8%259B%259B%25E4%25BE%25A0&rsv_pq=82798019000115c6&rsv_t=5b37%2FF78vjLc%2Bcj34VNVYT29udrj06M2q0ju5rlYNRUMjXb7VSXy3gaELzE&rqlang=cn&rsv_enter=0'
+    # print(nameUrl)
+    html = request.urlopen(nameUrl)
+    html_data = html.read().decode('utf-8')
+    # print(html_data)
+    soup = bs(html_data, 'html.parser')
+    movie_a_lits = soup.find_all('a', class_='c-showurl')
+    href = movie_a_lits[0].get('href')
+    # 爬去豆瓣的信息
+    html = request.urlopen(href)
+    html_data = html.read().decode('utf-8')
+    soup = bs(html_data, 'html.parser')
+    a = soup.find_all('a', class_='lnk-sharing')
+    # print(a[0].get('data-object_id'))
+    movie_name = a[0].get('data-name')
+    print('为你搜索的是《 ' + movie_name + '》的电影评论')
+    return a[0].get('data-object_id')
+
 #爬取评论函数
 def getCommentsById(movieId, pageNum):
-    eachCommentList = [];
+    eachCommentList = []
     if pageNum>0:
         start = (pageNum-1) * 20
     else:
@@ -54,10 +79,11 @@ def main():
     #循环获取第一个电影的前10页评论
     commentList = []
     NowPlayingMovie_list = getNowPlayingMovie_list()
+    movieId = getMovieIdByName()
     for i in range(10):
         num = i + 1
-        # commentList_temp = getCommentsById(NowPlayingMovie_list[0]['id'], num)
-        commentList_temp = getCommentsById('27133303', num)
+        commentList_temp = getCommentsById(movieId, num)
+        # commentList_temp = getCommentsById('27133303', num)
         commentList.append(commentList_temp)
 
     #将列表中的数据转换为字符串
@@ -83,7 +109,7 @@ def main():
     words_stat=words_stat.reset_index().sort_values(by=["计数"],ascending=False)
 
     #用词云进行显示
-    wordcloud=WordCloud(font_path="simhei.ttf",background_color="white",max_font_size=80)
+    wordcloud=WordCloud(font_path="simhei.ttf",background_color="white",max_font_size=80,width=800,height=400)
     word_frequence = {x[0]:x[1] for x in words_stat.head(1000).values}
 
     word_frequence_list = []
@@ -97,4 +123,6 @@ def main():
     plt.show()
 
 #主函数
-main()
+if __name__ == '__main__':
+    main()
+    # getMovieIdByName()
