@@ -55,6 +55,7 @@ public class KafkaMonitor {
             TopicMetadataRequest req = new TopicMetadataRequest(topics);
             kafka.javaapi.TopicMetadataResponse resp = consumer.send(req);
             List<TopicMetadata> metaData = resp.topicsMetadata();
+
             if(metaData!=null && !metaData.isEmpty()){
                 TopicMetadata item = metaData.get(0);
                 for (PartitionMetadata part : item.partitionsMetadata()) {
@@ -88,10 +89,10 @@ public class KafkaMonitor {
 
 
     public static void main(String[] args) {
-        int port = 9092;
+        int port = 6667;
         String topic = "cw_test001";
         int time = -1;
-        KafkaMonitor offsetSearch = new KafkaMonitor(topic,port,"dsgcd4220",time);
+        KafkaMonitor offsetSearch = new KafkaMonitor(topic,port,"192.168.23.220",time);
         Map<String, String> map = offsetSearch.getEveryPartitionMaxOffset();
         for (String key : map.keySet()) {
             System.out.println(key+"---"+map.get(key));

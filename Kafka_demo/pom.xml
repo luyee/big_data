@@ -24,7 +24,7 @@
     </build>
 
     <properties>
-        <kafka_version>0.10.0.0</kafka_version>
+        <kafka_version>0.10.2.0</kafka_version>
     </properties>
 
 
@@ -66,6 +66,11 @@
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.11</artifactId>
             <version>0.10.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.10</artifactId>
+            <version>0.8.2.2</version>
         </dependency>
     </dependencies>
 

@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from urllib import request
 from bs4 import BeautifulSoup as bs
 import urllib.parse
+
 # %matplotlib inline
 
 import matplotlib
@@ -76,9 +77,9 @@ def getCommentsById(movieId, pageNum):
     return eachCommentList
 
 def main():
-    #循环获取第一个电影的前10页评论
+    #循环获取电影的前10页评论
     commentList = []
-    NowPlayingMovie_list = getNowPlayingMovie_list()
+    # NowPlayingMovie_list = getNowPlayingMovie_list()
     movieId = getMovieIdByName()
     for i in range(10):
         num = i + 1
