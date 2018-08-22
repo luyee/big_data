@@ -13,15 +13,24 @@ public class TestDemo {
 //        Double.parseDouble(a);
 //        Long.parseLong(a)
 
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        System.out.println(timestamp);
-        Date date = new Date(timestamp.getTime());
-        System.out.println(date);
+//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//        System.out.println(timestamp);
+//        Date date = new Date(timestamp.getTime());
+//        System.out.println(date);
 //        String phone1 = "123";
 //        String phone2 = new String("123");
 //        String phone3 = phone1;
 //
 //        System.out.println(phone1 == phone2);
 //        System.out.println(phone1 == phone3);
+
+
+        String name = "DEFAULT.test001";
+
+        String name1 = null;
+        if(name.toLowerCase().contains("default")){
+            name1 = name.substring(name.indexOf(".")+1);
+        }
+        System.out.println(name1);
     }
 }

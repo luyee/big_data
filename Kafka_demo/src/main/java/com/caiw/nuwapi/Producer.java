@@ -76,10 +76,11 @@ public class Producer {
 
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 1;i<400;i++){
-            produce(i);
-            Thread.sleep(2000);
-        }
+//        for (int i = 400;i<800;i++){
+//            produce(i);
+//            Thread.sleep(2000);
+//        }
+        System.out.println(getJsonMessage(1));
     }
 
 

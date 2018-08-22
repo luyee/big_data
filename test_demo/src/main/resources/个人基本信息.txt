@@ -1,0 +1,11 @@
+3.1.1.1.1. 个人基本信息BaseInfo
+3.1.1.1.2. 个人基本信息-地址信息BASEINFO_ADDRESS
+3.1.1.1.3. 残疾情况BaseInfo_Disability
+3.1.1.1.4. 过敏源BaseInfo_Allergens
+3.1.1.1.5. 环境危险因素BaseInfo_Envrisk
+3.1.1.1.6. 疾病史BaseInfo_DiseaseHistory
+3.1.1.1.7. 家族史BaseInfo_FamHistory
+3.1.1.1.8. 手术记录BaseInfo_OpHistory
+3.1.1.1.9. 输血史BaseInfo_Bloodtrans
+3.1.1.1.10. 外伤史BaseInfo_TraumaHistory
+3.1.1.1.11. 医疗费用支付方式BaseInfo_Payway

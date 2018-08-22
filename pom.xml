@@ -27,6 +27,7 @@
         <module>data_struct</module>
         <module>tdh_test</module>
         <module>kylin_demo</module>
+        <module>fusioninsight_hd</module>
     </modules>
 
     <dependencies>
