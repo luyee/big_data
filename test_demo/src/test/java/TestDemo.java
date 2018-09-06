@@ -25,12 +25,20 @@ public class TestDemo {
 //        System.out.println(phone1 == phone3);
 
 
-        String name = "DEFAULT.test001";
+//        String name = "DEFAULT.test001";
+//
+//        String name1 = null;
+//        if(name.toLowerCase().contains("default")){
+//            name1 = name.substring(name.indexOf(".")+1);
+//        }
+//        System.out.println(name1);
+        
 
-        String name1 = null;
-        if(name.toLowerCase().contains("default")){
-            name1 = name.substring(name.indexOf(".")+1);
-        }
-        System.out.println(name1);
+        String s = "and | or";
+
+//        String s1 = s.split("\\.")[0];
+        String s1 = s.split("\\|")[0];
+
+        System.out.println("s1 = " + s1);
     }
 }

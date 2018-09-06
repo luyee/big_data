@@ -15,6 +15,10 @@ import java.util.List;
 
 public class ExcelToSql {
 
+    public static void main(String[] args) throws Exception {
+        main("综合管理");
+    }
+
     /**
      * 传入文件名，excel文件，表数据文件。通过excel的sheet从txt文件获取表名
      * @throws Exception
@@ -68,6 +72,9 @@ public class ExcelToSql {
      */
     private static String getSql(List<List<String>> lists, String tableName){
         StringBuilder buffer = new StringBuilder("");
+        //oracle if table exists
+        buffer.append("declare\n" + "      num   number;\n" + "begin\n" + "    select count(1) into num from user_tables where table_name = upper('").append(tableName).append("') ;\n").append("    if num > 0 then\n").append("        execute immediate 'drop table ").append(tableName).append("' ;\n").append("    end if;\n").append("end;\n");
+        //create table
         buffer.append(" create table  ");
         buffer.append(tableName).append("( \n");
         int size = lists.size();
@@ -76,17 +83,17 @@ public class ExcelToSql {
         }
         for (int i = 0 ; i < size ; i++ ) {
             List<String> list = lists.get(i);
-            if(i >= size ){
+            if(i >= size-1 ){
                 buffer.append(" ").append(list.get(1)).append(" ").append(list.get(4));
             }else {
                 buffer.append(" ").append(list.get(1)).append(" ").append(list.get(4)).append(" ,\n");
             }
         }
         buffer.append(" ); \n");
-
+        //字段注释
         for (int i = 0 ; i < size ; i++ ) {
             List<String> list = lists.get(i);
-            buffer.append("comment on table ").append(tableName).append(".").append(list.get(1)).append(" is '").append(list.get(2));
+            buffer.append("comment on column ").append(tableName).append(".").append(list.get(1)).append(" is '").append(list.get(2));
             buffer.append("';\n");
         }
         buffer.append("commit; ");

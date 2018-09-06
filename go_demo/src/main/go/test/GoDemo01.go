@@ -6,13 +6,14 @@ func main() {
 	const STR4  = "test"
 	//var flag bool = true
 	var test = 123
+
 	var str1,str2,str3 = "test","test2","test3"
 	str1 = "test1"
 	fmt.Println(str1,str2,str3,test,STR4)
 
 	fmt.Printf("值为: %d \n",test)
-
-
+	_ = qqq(2, 3)
+	//fmt.Print(_)
 	var l int = 5
 	var w = 6
 	fmt.Println(l * w)
