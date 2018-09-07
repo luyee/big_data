@@ -53,8 +53,5 @@ object ShareFriend {
         result =>
           println(result._1 + "\t" +result._2)
       }
-
-
-
   }
 }
