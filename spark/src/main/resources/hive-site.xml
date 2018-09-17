@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+
+<property>
+    <name>hive.zookeeper.quorum</name>
+    <value>dsgcd4134,dsgcd4135,dsgcd4136</value>
+</property>
+<property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>dsgcd4134,dsgcd4135,dsgcd4136</value>
+</property>
+<property>
+    <name>holodesk.zookeeper.quorum</name>
+    <value>dsgcd4134,dsgcd4135,dsgcd4136</value>
+</property>
+<property>
+    <name>zookeeper.znode.parent</name>
+    <value>/hyperbase1</value>
+</property>
+
+
+<property>
+    <name>inceptor.scheduler.enabled</name>
+    <value>false</value>
+</property>
+ 
+
+
+<property>
+    <name>hive.stats.dbconnectionstring</name>
+    <value>jdbc:mysql://dsgcd4136:3316/metastore_inceptor1?createDatabaseIfNotExist=true&amp;user=inceptoruser&amp;password=password&amp;characterEncoding=UTF-8</value>
+</property>
+<property>
+    <name>hive.exec.scratchdir</name>
+    <value>hdfs://nameservice1/inceptor1/tmp/hive</value>
+</property>
+<property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://dsgcd4134:9083</value>
+</property>
+<property>
+    <name>mapred.job.tracker</name>
+    <value>dsgcd4135:8031,dsgcd4134:8031</value>
+</property>
+<property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://dsgcd4136:3316/metastore_inceptor1?createDatabaseIfNotExist=false&amp;characterEncoding=UTF-8</value>
+</property>
+<property>
+    <name>license.zookeeper.quorum</name>
+    <value>dsgcd4134:2291,dsgcd4135:2291,dsgcd4136:2291</value>
+</property>
+
+
+<property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+</property>
+<property>
+    <name>hive.exec.compress.intermediate</name>
+    <value>true</value>
+</property>
+<property>
+    <name>hive.exec.dynamic.partition</name>
+    <value>false</value>
+</property>
+<property>
+    <name>hive.hwi.war.file</name>
+    <value>lib/hive-hwi-0.8.1.war</value>
+</property>
+<property>
+    <name>hive.metastore.warehouse.dir</name>
+    <value>hdfs://nameservice1/inceptor1/user/hive/warehouse</value>
+</property>
+<property>
+    <name>hive.users.in.admin.role</name>
+    <value>hive,hue</value>
+</property>
+<property>
+    <name>hive.server2.logging.operation.enabled</name>
+    <value>false</value>
+</property>
+<property>
+    <name>hive.server2.idle.operation.timeout</name>
+    <value>28800000</value>
+</property>
+<property>
+    <name>hive.server2.enabled</name>
+    <value>true</value>
+</property>
+<property>
+    <name>hive.metastore.execute.setugi</name>
+    <value>true</value>
+</property>
+<property>
+    <name>hbase.client.scanner.caching</name>
+    <value>500</value>
+</property>
+<property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>inceptoruser</value>
+</property>
+<property>
+    <name>hive.server2.session.check.interval</name>
+    <value>60000</value>
+</property>
+<property>
+    <name>hive.server2.thrift.port</name>
+    <value>10000</value>
+</property>
+<property>
+    <name>datanucleus.autoStartMechanism</name>
+    <value>SchemaTable</value>
+</property>
+<property>
+    <name>plsql.compile.dml.check.semantic</name>
+    <value>true</value>
+</property>
+<property>
+    <name>hive.aux.jars.path</name>
+    <value></value>
+</property>
+<property>
+    <name>datanucleus.fixedDatastore</name>
+    <value>true</value>
+</property>
+<property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.jdbc.Driver</value>
+</property>
+<property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>password</value>
+</property>
+<property>
+    <name>hive.input.format</name>
+    <value>org.apache.hadoop.hive.ql.io.HiveInputFormat</value>
+</property>
+<property>
+    <name>datanucleus.autoCreateSchema</name>
+    <value>false</value>
+</property>
+<property>
+    <name>hive.server2.idle.session.timeout</name>
+    <value>14400000</value>
+</property>
+<property>
+    <name>hive.exec.scratchdir</name>
+    <value>hdfs://nameservice1/inceptor1/tmp/hive</value>
+</property>
+<property>
+    <name>hive.exec.compress.output</name>
+    <value>false</value>
+</property>
+</configuration>

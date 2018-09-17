@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>db_demo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>postgresql</module>
+    </modules>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->

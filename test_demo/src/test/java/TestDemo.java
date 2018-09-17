@@ -1,5 +1,6 @@
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 /**
  * @ClassName TestDemo
@@ -37,8 +38,9 @@ public class TestDemo {
         String s = "and | or";
 
 //        String s1 = s.split("\\.")[0];
-        String s1 = s.split("\\|")[0];
+        String[] s1 = s.split("\\|",2);
 
-        System.out.println("s1 = " + s1);
+        Arrays.stream(s1).forEach(System.out::println);
+//        System.out.println("s1 = " + s1.);
     }
 }
