@@ -48,6 +48,11 @@
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
     </dependencies>
     </dependencyManagement>
 </project>
