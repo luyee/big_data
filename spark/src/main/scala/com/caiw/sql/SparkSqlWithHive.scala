@@ -15,7 +15,7 @@ object SparkSqlWithHive {
 //      " PARTITIONED BY (month string)" +
 //      " row format delimited fields terminated by '\\t';")
 //        .show()
-    new HiveContext()
+//    new HiveContext()
     ss.read
       .option("header","true")
       .csv("file:///C:\\Users\\caiwe\\Desktop\\partition.csv")

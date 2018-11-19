@@ -4,6 +4,8 @@ import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.{SQLContext, SparkSession}
 import org.elasticsearch.spark._
 
+import scala.collection.mutable.ArrayBuffer
+
 object SparkWithES {
 
   def main(args: Array[String]): Unit = {
@@ -14,10 +16,11 @@ object SparkWithES {
       * 我们要去连接es集群，要设置es集群的位置(host, port)
       */
     conf.set("es.index.auto.create", "true")
-    conf.set("es.nodes", "localhost")
+    conf.set("es.nodes", "127.0.0.1")
     //---->如果是连接的远程es节点，该项必须要设置
     conf.set("es.port", "9200")
-    val sparkSession = SparkSession.builder().master("local[2]").appName("sparkWithEs").config(conf).getOrCreate()
+    //.master("local[2]").appName("sparkWithEs")
+    val sparkSession = SparkSession.builder().config(conf).getOrCreate()
 //    val sc = new SparkContext(conf)
 //    val sqlContext = sparkSession.sqlContext
 
@@ -73,8 +76,14 @@ object SparkWithES {
   }
 
   def writeJson2Es(sparkSession: SparkSession): Unit = {
-    val resource = "index_test001/sh001"
-    val strings = sparkSession.sparkContext.textFile("file:///C:\\Users\\caiwe\\Desktop\\details01.json").collect()
+    val resource = "index_test002/test002"
+//    val strings = sparkSession.sparkContext.textFile("file:///C:\\Users\\caiwe\\Desktop\\file2es.json").collect()
+
+//    println("string === " + strings(0))
+
+    val strings = Array("{\"like\":\"吃饭\",\"sex\":\"男\"}")
+//    sparkSession.sparkContext.makeRDD(strings)
+
     sparkSession.sparkContext.makeRDD(strings).saveJsonToEs(resource)
   }
 }
