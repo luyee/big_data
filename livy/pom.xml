@@ -19,6 +19,7 @@
         <scala.version>${scala-2.11.version}</scala.version>
     </properties>
 
+<dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.apache.livy</groupId>
@@ -102,7 +103,7 @@
             <artifactId>log4j</artifactId>
         </dependency>
     </dependencies>
-
+</dependencyManagement>
 
     <artifactId>livy</artifactId>
     <build>

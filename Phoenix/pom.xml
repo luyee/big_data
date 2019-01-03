@@ -15,6 +15,7 @@
         <phoexix_version>4.7.0-HBase-1.1</phoexix_version>
     </properties>
 
+    <dependencyManagement>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.phoenix/phoenix-core -->
         <dependency>
@@ -35,4 +36,5 @@
             <artifactId>log4j</artifactId>
         </dependency>
     </dependencies>
+    </dependencyManagement>
 </project>

@@ -11,6 +11,7 @@
 
     <artifactId>tdh_test</artifactId>
 
+    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -25,5 +26,5 @@
             <artifactId>log4j</artifactId>
         </dependency>
     </dependencies>
-
+    </dependencyManagement>
 </project>

@@ -28,6 +28,7 @@
     </properties>
 
 
+    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -70,5 +71,5 @@
             <version>0.8.2.2</version>
         </dependency>
     </dependencies>
-
+    </dependencyManagement>
 </project>

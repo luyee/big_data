@@ -10,7 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spark</artifactId>
-
+    <packaging>pom</packaging>
+    <modules>
+        <module>spark_etl</module>
+    </modules>
 
 
     <dependencyManagement>
@@ -22,7 +25,10 @@
             <artifactId>spark-core_2.11</artifactId>
             <!--<version>${spark-version}</version>-->
         </dependency>
-
+        <dependency>
+            <groupId>ojdbc</groupId>
+            <artifactId>ojdbc</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
         <dependency>
             <groupId>org.apache.spark</groupId>

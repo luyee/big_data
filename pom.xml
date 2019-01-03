@@ -33,6 +33,7 @@
     <properties>
         <spark-version>2.2.0</spark-version>
         <es-version>6.2.4</es-version>
+        <dsgKyloVersion>0.9.0-SNAPSHOT</dsgKyloVersion>
     </properties>
 
 
@@ -56,8 +57,6 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.4</version>
         </dependency>
-
-
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -132,6 +131,11 @@
             <version>4.12</version>
         </dependency>
         <dependency>
+            <groupId>com.thinkbiganalytics.kylo</groupId>
+            <artifactId>kylo-feed-manager-rest-model</artifactId>
+            <version>${dsgKyloVersion}</version>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1201-jdbc4</version>
@@ -180,6 +184,18 @@
             <artifactId>grok</artifactId>
             <version>0.1.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.9.1</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.oracle</groupId>-->
+            <!--<artifactId>ojdbc6</artifactId>-->
+            <!--<version>11.1.0.6.0</version>-->
+        <!--</dependency>-->
+
+
     </dependencies>
 
 
