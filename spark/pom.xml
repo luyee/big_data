@@ -16,7 +16,6 @@
     </modules>
 
 
-    <dependencyManagement>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
@@ -24,10 +23,6 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <!--<version>${spark-version}</version>-->
-        </dependency>
-        <dependency>
-            <groupId>ojdbc</groupId>
-            <artifactId>ojdbc</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
         <dependency>
@@ -89,5 +84,4 @@
             <artifactId>spark-mllib_2.11</artifactId>
         </dependency>
     </dependencies>
-    </dependencyManagement>
 </project>

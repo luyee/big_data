@@ -11,7 +11,6 @@
 
     <artifactId>test_demo</artifactId>
 
-    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -21,6 +20,10 @@
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.hive/hive-serde -->
         <dependency>
@@ -54,5 +57,4 @@
             <artifactId>fastjson</artifactId>
         </dependency>
     </dependencies>
-    </dependencyManagement>
 </project>

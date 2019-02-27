@@ -9,9 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tdh_test</artifactId>
+    <artifactId>eel_sdk</artifactId>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.eels/eel-hive -->
+        <dependency>
+            <groupId>io.eels</groupId>
+            <artifactId>eel-hive_2.11</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -21,8 +26,13 @@
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
     </dependencies>
+
 </project>

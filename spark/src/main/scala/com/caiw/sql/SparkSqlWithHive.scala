@@ -16,13 +16,13 @@ object SparkSqlWithHive {
 //      " row format delimited fields terminated by '\\t';")
 //        .show()
 //    new HiveContext()
-    ss.read
-      .option("header","true")
-      .csv("file:///C:\\Users\\caiwe\\Desktop\\partition.csv")
-        .createTempView("test")
+//    ss.read
+//      .option("header","true")
+//      .csv("file:///C:\\Users\\caiwe\\Desktop\\partition.csv")
+//        .createTempView("test")
     //1535621681000
 //    ss.sql("insert into test_201809.trans_test003_feed partition(processing_dttm='1535621681000') select * from test").show()
-    ss.sql("insert into default.tb_partition partition(month='6') select * from test").show()
+    ss.sql("SELECT * from dsgdata.dsgdatatest2 where registration_dttm like '%2016-02%'").show()
 
     ss.close()
   }

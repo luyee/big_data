@@ -10,24 +10,26 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spark</module>
-        <module>pythondemo</module>
+        <module>python</module>
         <module>elasticsearch</module>
         <module>go_demo</module>
         <module>mr</module>
-        <module>Kafka_demo</module>
-        <module>java_demo</module>
-        <module>storm_demo</module>
+        <module>Kafka</module>
+        <module>java</module>
+        <module>storm</module>
         <module>Phoenix</module>
         <module>Netty</module>
         <module>test_demo</module>
-        <module>db_demo</module>
-        <module>jsoup_demo</module>
-        <module>HBase_demo</module>
+        <module>db</module>
+        <module>jsoup</module>
+        <module>HBase</module>
         <module>livy</module>
         <module>data_struct</module>
         <module>tdh_test</module>
-        <module>kylin_demo</module>
+        <module>kylin</module>
         <module>fusioninsight_hd</module>
+        <module>flink</module>
+        <module>eel_sdk</module>
     </modules>
 
     <properties>
@@ -36,7 +38,7 @@
         <dsgKyloVersion>0.9.0-SNAPSHOT</dsgKyloVersion>
     </properties>
 
-
+<dependencyManagement>
     <dependencies>
         <!-- jsoup -->
         <dependency>
@@ -73,6 +75,12 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <version>${spark-version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
@@ -130,11 +138,18 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.thinkbiganalytics.kylo</groupId>-->
+            <!--<artifactId>kylo-feed-manager-rest-model</artifactId>-->
+            <!--<version>${dsgKyloVersion}</version>-->
+        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-clients -->
         <dependency>
-            <groupId>com.thinkbiganalytics.kylo</groupId>
-            <artifactId>kylo-feed-manager-rest-model</artifactId>
-            <version>${dsgKyloVersion}</version>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients_2.11</artifactId>
+            <version>1.7.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -194,10 +209,44 @@
             <!--<artifactId>ojdbc6</artifactId>-->
             <!--<version>11.1.0.6.0</version>-->
         <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-scala -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-scala_2.11</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-kafka-0.10 -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka-0.10_2.11</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_2.11</artifactId>
+            <version>0.10.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-java -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-scala_2.11</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.8.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.eels/eel-hive -->
+        <dependency>
+            <groupId>io.eels</groupId>
+            <artifactId>eel-hive_2.11</artifactId>
+            <version>1.2.4</version>
+        </dependency>
 
 
     </dependencies>
-
+</dependencyManagement>
 
     <build>
         <plugins>
