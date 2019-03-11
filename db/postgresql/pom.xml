@@ -11,7 +11,6 @@
 
     <artifactId>postgresql</artifactId>
 
-    <dependencyManagement>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
@@ -20,8 +19,11 @@
             <!--<version>9.4-1201-jdbc4</version>-->
             <!--<version>9.2-1002-jdbc4</version>-->
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.oracle</groupId>-->
+            <!--<artifactId>ojdbc6</artifactId>-->
+        <!--</dependency>-->
 
 
     </dependencies>
-    </dependencyManagement>
 </project>
