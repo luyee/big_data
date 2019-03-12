@@ -3,7 +3,10 @@ package com.caiw.generatedata;
 
 import com.caiw.utils.JdbcUtils;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Random;
@@ -57,18 +60,62 @@ public class GenerateData {
     public static void main(String[] args) throws SQLException {
 //        for (int i = 0; i < 1; i++) {
 //            String sqlWithData = getSqlWithData();
-//            JdbcInsert.insertData(sqlWithData);
+////            JdbcInsert.insertData(sqlWithData);
 //            System.out.println(i);
 //            String name = getName(5);
+//            System.out.println(sqlWithData);
 //            System.out.println(UUID.randomUUID().toString()+"\t"+name+"\t"+getRandomEmail(name));
 //        }
-        System.out.println(intTransfromBool(1));
-        System.out.println(intTransfromBool(2));
-
+//        System.out.println(intTransformBool(1));
+//        System.out.println(intTransformBool(2));
+        for (int i = 0; i < 1000; i++) {
+            if(i%10 == 0){
+                System.out.println(i);
+            }
+            StringBuilder fileData = getFileData();
+            String file = "D:\\logs\\user_test_5e.txt";
+            appendData(file,fileData.toString());
+        }
     }
 
-    public static boolean intTransfromBool(Integer integer){
+    private static StringBuilder getFileData(){
+        //50W
+        int length = 500000;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            UserEntity user = getUser();
+            builder.append(user.getId());
+            builder.append(",");
+            builder.append(user.getName());
+            builder.append(",");
+            builder.append(user.getAge());
+            builder.append(",");
+            builder.append(user.getEmail());
+            builder.append("\n");
+        }
+        return builder;
+    }
+
+
+    public static boolean intTransformBool(Integer integer){
         return integer == 1;
+    }
+
+    private static void appendData(String file, String content){
+        BufferedWriter out = null ;
+        try{
+            out = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(file,true)));
+            out.write(content);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            try{
+                out.close();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     public static String getSqlWithData(){

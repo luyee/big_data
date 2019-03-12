@@ -101,10 +101,13 @@ public class TestDemo {
 //        Object json1 = JSONObject.toJSON(jsonMap);
 //
 //        System.out.println(json1.toString());
-        String json = "{\"id\":\"2\",\"name\":\"caiw\",\"age\":null}";
+//        String json = "{\"id\":\"2\",\"name\":\"caiw\",\"age\":null}";
+//
+//        Object parse = JSON.parse(json);
+//        System.out.println(parse);
 
-        Object parse = JSON.parse(json);
-        System.out.println(parse);
+        String url = System.getProperty("user.dir")+"/lib";
+        System.out.println(url);
 
     }
 

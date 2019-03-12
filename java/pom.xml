@@ -19,8 +19,11 @@
     <properties>
         <dsgKyloVersion>0.9.0-SNAPSHOT</dsgKyloVersion>
     </properties>
-    <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+            </dependency>
             <dependency>
                 <groupId>com.thinkbiganalytics.kylo</groupId>
                 <artifactId>kylo-feed-manager-rest-model</artifactId>
@@ -46,8 +49,15 @@
                 <groupId>io.thekraken</groupId>
                 <artifactId>grok</artifactId>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+            </dependency>
         </dependencies>
-    </dependencyManagement>
 
 
     <build>
