@@ -30,6 +30,7 @@
         <module>fusioninsight_hd</module>
         <module>flink</module>
         <module>eel_sdk</module>
+        <module>hdfs</module>
     </modules>
 
     <properties>

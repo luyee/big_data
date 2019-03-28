@@ -58,24 +58,24 @@ public class GenerateData {
     }
 
     public static void main(String[] args) throws SQLException {
-//        for (int i = 0; i < 1; i++) {
-//            String sqlWithData = getSqlWithData();
-////            JdbcInsert.insertData(sqlWithData);
-//            System.out.println(i);
+        for (int i = 0; i < 1; i++) {
+            String sqlWithData = getSqlWithData();
+            JdbcInsert.insertData(sqlWithData);
+            System.out.println(i);
 //            String name = getName(5);
 //            System.out.println(sqlWithData);
 //            System.out.println(UUID.randomUUID().toString()+"\t"+name+"\t"+getRandomEmail(name));
-//        }
+        }
 //        System.out.println(intTransformBool(1));
 //        System.out.println(intTransformBool(2));
-        for (int i = 0; i < 1000; i++) {
-            if(i%10 == 0){
-                System.out.println(i);
-            }
-            StringBuilder fileData = getFileData();
-            String file = "D:\\logs\\user_test_5e.txt";
-            appendData(file,fileData.toString());
-        }
+//        for (int i = 0; i < 1000; i++) {
+//            if(i%10 == 0){
+//                System.out.println(i);
+//            }
+//            StringBuilder fileData = getFileData();
+//            String file = "D:\\logs\\user_test_5e.txt";
+//            appendData(file,fileData.toString());
+//        }
     }
 
     private static StringBuilder getFileData(){

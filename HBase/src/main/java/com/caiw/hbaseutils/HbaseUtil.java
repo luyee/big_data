@@ -16,7 +16,7 @@ public class HbaseUtil {
 
 
     // 初始化链接
-    private static void init() {
+    public static void init() {
         Configuration configuration = HBaseConfiguration.create();
         /*
          * configuration.set("hbase.zookeeper.quorum",
@@ -25,8 +25,9 @@ public class HbaseUtil {
          * configuration.set("zookeeper.znode.parent","/hbase");
          */
         configuration.set("hbase.zookeeper.property.clientPort", "2181");
-        configuration.set("hbase.zookeeper.quorum", "192.168.23.220,192.168.23.221,192.168.23.222");
-        configuration.set("hbase.master", "192.168.23.222:16000");
+        configuration.set("hbase.zookeeper.quorum", "192.168.23.54,192.168.23.55,192.168.23.56");
+        configuration.set("hbase.master", "192.168.23.54:16000");
+        configuration.set("zookeeper.znode.parent","/hbase-unsecure");
         File workaround = new File(".");
         System.getProperties().put("hadoop.home.dir",
                 workaround.getAbsolutePath());
@@ -45,8 +46,9 @@ public class HbaseUtil {
         }
     }
 
+
     // 关闭连接
-    private static void close() {
+    public static void close() {
         try {
             if (null != admin)
                 admin.close();
@@ -57,6 +59,17 @@ public class HbaseUtil {
         }
 
     }
+
+    public static Admin getAdmin(){
+        init();
+        return admin;
+    }
+
+    public static Connection getConnection(){
+        init();
+        return connection;
+    }
+
 
 
     // 建表
@@ -80,13 +93,13 @@ public class HbaseUtil {
 
     // 删表
     public static void deleteTable(String tableName) throws IOException {
-        init();
+
         TableName tn = TableName.valueOf(tableName);
         if (admin.tableExists(tn)) {
             admin.disableTable(tn);
             admin.deleteTable(tn);
         }
-        close();
+
     }
 
     // 查看已有表
@@ -106,6 +119,7 @@ public class HbaseUtil {
         Table table = connection.getTable(TableName.valueOf(tableName));
         Put put = new Put(Bytes.toBytes(rowkey));
         put.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes(col), Bytes.toBytes(val));
+        put.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes("age"), Bytes.toBytes("20"));
         table.put(put);
 
         // 批量插入

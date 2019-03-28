@@ -14,7 +14,6 @@
         <dsgKyloVersion>0.9.0-SNAPSHOT</dsgKyloVersion>
     </properties>
 
-    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.thinkbiganalytics.kylo</groupId>
@@ -25,10 +24,5 @@
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
             </dependency>
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-            </dependency>
         </dependencies>
-    </dependencyManagement>
 </project>
