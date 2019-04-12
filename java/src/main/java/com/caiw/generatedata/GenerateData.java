@@ -1,7 +1,6 @@
 package com.caiw.generatedata;
 
 
-import com.caiw.utils.JdbcUtils;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -60,8 +59,8 @@ public class GenerateData {
     public static void main(String[] args) throws SQLException {
         for (int i = 0; i < 1; i++) {
             String sqlWithData = getSqlWithData();
-            JdbcInsert.insertData(sqlWithData);
-            System.out.println(i);
+//            JdbcInsert.insertData(sqlWithData);
+            System.out.println(sqlWithData);
 //            String name = getName(5);
 //            System.out.println(sqlWithData);
 //            System.out.println(UUID.randomUUID().toString()+"\t"+name+"\t"+getRandomEmail(name));

@@ -73,14 +73,21 @@ public class HbaseUtil {
 
 
     // 建表
-    public static void createTable(String tableNmae, String[] cols) throws IOException {
+    public static void createTable(String nameSpace,String srcTableName, String[] cols) throws IOException {
 
         init();
-        TableName tableName = TableName.valueOf(tableNmae);
+        TableName tableName = TableName.valueOf(srcTableName);
 
         if (admin.tableExists(tableName)) {
-            System.out.println("talbe is exists!");
+            System.out.println("table is exists!");
         } else {
+            try{
+                admin.getNamespaceDescriptor(nameSpace);
+            }catch(NamespaceNotFoundException e){
+                //若发生特定的异常，即找不到命名空间，则创建命名空间
+                NamespaceDescriptor namespaceDescriptor = NamespaceDescriptor.create(nameSpace).build();
+                admin.createNamespace(namespaceDescriptor);
+            }
             HTableDescriptor hTableDescriptor = new HTableDescriptor(tableName);
             for (String col : cols) {
                 HColumnDescriptor hColumnDescriptor = new HColumnDescriptor(col);
@@ -93,13 +100,13 @@ public class HbaseUtil {
 
     // 删表
     public static void deleteTable(String tableName) throws IOException {
-
+        init();
         TableName tn = TableName.valueOf(tableName);
         if (admin.tableExists(tn)) {
             admin.disableTable(tn);
             admin.deleteTable(tn);
         }
-
+        close();
     }
 
     // 查看已有表

@@ -79,9 +79,9 @@ public class Producer {
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
 
-        for (int i = 2000003;i<= 2000004;i++){
+        for (int i = 1;i<= 2000000;i++){
             produce(i,producer);
-            if(i % 100 == 0){
+            if(i % 1000 == 0){
                 System.out.println(i);
             }
         }

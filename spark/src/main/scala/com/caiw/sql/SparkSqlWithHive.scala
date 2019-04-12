@@ -11,6 +11,8 @@ object SparkSqlWithHive {
       .getOrCreate()
 
 
+
+
 //    ss.sql("create table tb_partition(id string, name string)" +
 //      " PARTITIONED BY (month string)" +
 //      " row format delimited fields terminated by '\\t';")
@@ -22,7 +24,16 @@ object SparkSqlWithHive {
 //        .createTempView("test")
     //1535621681000
 //    ss.sql("insert into test_201809.trans_test003_feed partition(processing_dttm='1535621681000') select * from test").show()
-    ss.sql("SELECT * from dsgdata.dsgdatatest2 where registration_dttm like '%2016-02%'").show()
+    val frame = ss.sql("select * from wylt")
+    val schema = frame.schema
+    val rdd = frame.rdd
+      .map {
+        row =>
+          val age = row.getString(3)
+          age -> row
+      }.reduceByKey((x, y) => x)
+      .map(_._2)
+    ss.createDataFrame(rdd,schema).show()
 
     ss.close()
   }

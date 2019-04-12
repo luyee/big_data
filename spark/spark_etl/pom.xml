@@ -27,10 +27,6 @@
                     <!--<groupId>org.apache.hadoop</groupId>-->
                 <!--</exclusion>-->
                 <!--<exclusion>-->
-                    <!--<artifactId>hbase-common</artifactId>-->
-                    <!--<groupId>org.apache.hbase</groupId>-->
-                <!--</exclusion>-->
-                <!--<exclusion>-->
                     <!--<artifactId>guava</artifactId>-->
                     <!--<groupId>com.google.guava</groupId>-->
                 <!--</exclusion>-->
@@ -47,30 +43,34 @@
             <version>1.1.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.hive/hive-hbase-handler -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.hive</groupId>-->
-            <!--<artifactId>hive-hbase-handler</artifactId>-->
-            <!--<version>1.2.1</version>-->
-        <!--</dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.apache.thrift/libfb303 -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.thrift</groupId>-->
-            <!--<artifactId>libfb303</artifactId>-->
-            <!--<version>0.9.2</version>-->
-        <!--</dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-protocol -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.hbase</groupId>-->
-            <!--<artifactId>hbase-protocol</artifactId>-->
-            <!--<version>1.1.2</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.hbase/hbase-hadoop-compat &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.hbase</groupId>-->
-            <!--<artifactId>hbase-hadoop-compat</artifactId>-->
-            <!--<version>1.1.2</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-hbase-handler</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <!--<version>3.5</version>-->
+        </dependency>
+         <!--https://mvnrepository.com/artifact/org.apache.thrift/libfb303-->
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libfb303</artifactId>
+            <version>0.9.2</version>
+        </dependency>
+         <!--https://mvnrepository.com/artifact/org.apache.hbase/hbase-protocol-->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-protocol</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.hbase/hbase-hadoop-compat -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-hadoop-compat</artifactId>
+            <version>1.1.2</version>
+        </dependency>
 
     </dependencies>
 
