@@ -5,7 +5,6 @@ import kafka.common.ErrorMapping;
 import kafka.common.OffsetAndMetadata;
 import kafka.common.OffsetMetadataAndError;
 import kafka.common.TopicAndPartition;
-import kafka.javaapi.ConsumerMetadataResponse;
 import kafka.javaapi.OffsetCommitRequest;
 import kafka.javaapi.OffsetCommitResponse;
 import kafka.javaapi.OffsetFetchRequest;

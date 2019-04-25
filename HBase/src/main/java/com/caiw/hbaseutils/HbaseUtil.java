@@ -100,13 +100,13 @@ public class HbaseUtil {
 
     // 删表
     public static void deleteTable(String tableName) throws IOException {
-        init();
+//        init();
         TableName tn = TableName.valueOf(tableName);
         if (admin.tableExists(tn)) {
             admin.disableTable(tn);
             admin.deleteTable(tn);
         }
-        close();
+//        close();
     }
 
     // 查看已有表

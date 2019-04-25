@@ -12,7 +12,7 @@ import java.util.Random;
  **/
 
 public class Producer {
-    private final static String TOPIC = "cw_test_20190327_01";
+    private final static String TOPIC = "cw_test2019042201";
 
     private static String[] sourceId = {"/var/log/test.json","/var/csv/123.csv"};
 
@@ -67,7 +67,8 @@ public class Producer {
 
     public static void main(String[] args) throws InterruptedException {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.23.54:6667,192.168.23.55:6667,192.168.23.56:6667");
+        //master.hdp191.com:6667,slave.hdp192.com:6667,slave.hdp193.com:6667 test_2019041201
+        props.put("bootstrap.servers", "yamb2:6667,yamb3:6667,yamb4:6667");
         props.put("acks", "all");
         props.put("retries", 0);
         props.put("batch.size", 16384);
@@ -79,7 +80,7 @@ public class Producer {
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
 
-        for (int i = 1;i<= 2000000;i++){
+        for (int i = 1;i<= 1;i++){
             produce(i,producer);
             if(i % 1000 == 0){
                 System.out.println(i);

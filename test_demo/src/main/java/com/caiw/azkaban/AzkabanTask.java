@@ -48,9 +48,20 @@ public class AzkabanTask {
         API = "http://192.168.23.57:8081";
         loginGetSession(userName,password); //登录获取session
         //TODO:获取数据
-        String execId = startFlowHive2Kafka();
-            //hive2kafka
+
+        //hive2kafka
+//        String execId = startFlowHive2Kafka();
+
+        //hive2jdbc
+        TaskInfo taskInfo = new TaskInfo();
+        taskInfo.setProject("hive_etl");
+        taskInfo.setFlowName("hive2localV2");
+        String execId = startFlowHive2Local(taskInfo);
+//        String execId = startHive2Jdbc(taskInfo);
+//        String execId2 = startHive2Jdbc(taskInfo);
+        //hive2kafka
         log.info("execId = " + execId);
+//        log.info("execId2 = " + execId2);
     }
 
     /**
@@ -80,25 +91,32 @@ public class AzkabanTask {
      * @throws KeyManagementException
      * @throws NoSuchAlgorithmException
      */
-    private static String startFlow(TaskInfo taskInfo) throws KeyManagementException, NoSuchAlgorithmException {
+    private static String startHive2Jdbc(TaskInfo taskInfo) throws KeyManagementException, NoSuchAlgorithmException {
         SSLUtil.turnOffSslChecking();
         LinkedMultiValueMap<String, Object> linkedMultiValueMap = new LinkedMultiValueMap<>();
         linkedMultiValueMap.add("session.id", AzkabanTask.SESSION_ID);
         linkedMultiValueMap.add("ajax", "executeFlow");
         linkedMultiValueMap.add("project", taskInfo.getProject());
         linkedMultiValueMap.add("flow", taskInfo.getFlowName());
-        linkedMultiValueMap.add("flowOverride[executeDate]", taskInfo.getExecuteDate());
-        linkedMultiValueMap.add("flowOverride[sourceTable]", taskInfo.getSourceTable());
+        linkedMultiValueMap.add("flowOverride[executeDate]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[sourceTable]", "default.wylt");
+        linkedMultiValueMap.add("flowOverride[taskId]", "1");
         //daily为日表，monthly为月表
-        linkedMultiValueMap.add("flowOverride[sourceDataField]", taskInfo.getSourceDateField());
-        linkedMultiValueMap.add("flowOverride[isFullSync]", String.valueOf(taskInfo.isFullSync()));
-        linkedMultiValueMap.add("flowOverride[selectClause]", taskInfo.getSelectClause());
-        linkedMultiValueMap.add("flowOverride[whereClause]", taskInfo.getWhereClause());
-        linkedMultiValueMap.add("flowOverride[isDayTable]", String.valueOf(taskInfo.isDayTable()));
-        linkedMultiValueMap.add("flowOverride[targetTable]", taskInfo.getTargetTable());
-        Map postForObject = restTemplate.postForObject(API + "/executor", linkedMultiValueMap, Map.class);
-        log.info("azkaban start flow:{}", postForObject);
-        return postForObject.get("execid").toString();
+        linkedMultiValueMap.add("flowOverride[sourceDataField]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[sourceDataField]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[isFullSync]", String.valueOf(true));
+        linkedMultiValueMap.add("flowOverride[selectClause]", "*");
+        linkedMultiValueMap.add("flowOverride[whereClause]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[isDayTable]", String.valueOf(false));
+        linkedMultiValueMap.add("flowOverride[targetTable]", "test001.wyl_test");
+        linkedMultiValueMap.add("flowOverride[mysqlModField]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[mysqlModNumStr]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[targetDataField]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[targetWhereClause]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[targetTruncateFlag]", String.valueOf(false));
+        String responseStr = restTemplate.postForObject(API + "/executor", linkedMultiValueMap, String.class);
+        log.info("azkaban start flow:{}", responseStr);
+        return JSON.parseObject(responseStr).get("execid").toString();
     }
 
     private static String startFlow3() throws KeyManagementException, NoSuchAlgorithmException {
@@ -117,9 +135,9 @@ public class AzkabanTask {
         linkedMultiValueMap.add("flowOverride[strSchema]", "[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\"}]");
         linkedMultiValueMap.add("flowOverride[dbName]", "test");
         linkedMultiValueMap.add("flowOverride[tableName]", "cw_test_10_20190403_01");
-        Map postForObject = restTemplate.postForObject(API + "/executor", linkedMultiValueMap, Map.class);
-        log.info("azkaban start flow:{}", postForObject);
-        return postForObject.get("execid").toString();
+        String responseStr = restTemplate.postForObject(API + "/executor", linkedMultiValueMap, String.class);
+        log.info("azkaban start flow:{}", responseStr);
+        return JSON.parseObject(responseStr).get("execid").toString();
     }
 
     /**
@@ -159,16 +177,16 @@ public class AzkabanTask {
         linkedMultiValueMap.add("ajax", "executeFlow");
         linkedMultiValueMap.add("project", "hive2kafka");
         linkedMultiValueMap.add("flow", "hive2kafka");
-        linkedMultiValueMap.add("flowOverride[folder]", "/tmp/cw_test");
-        linkedMultiValueMap.add("flowOverride[executeDate]", "201902");
-        linkedMultiValueMap.add("flowOverride[sourceTable]", "test.cw_test_10_20190403_01");
+        linkedMultiValueMap.add("flowOverride[executeDate]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[taskId]", "1");
+        linkedMultiValueMap.add("flowOverride[sourceTable]", "default.wylt");
         //daily为日表，monthly为月表
-        linkedMultiValueMap.add("flowOverride[sourceDataField]", "date");
+        linkedMultiValueMap.add("flowOverride[sourceDataField]", "DSG_PARAM_EMPTY_VALUE");
         linkedMultiValueMap.add("flowOverride[isFullSync]", String.valueOf(true));
         linkedMultiValueMap.add("flowOverride[selectClause]", "*");
-        linkedMultiValueMap.add("flowOverride[whereClause]", "");
+        linkedMultiValueMap.add("flowOverride[whereClause]", "DSG_PARAM_EMPTY_VALUE");
         linkedMultiValueMap.add("flowOverride[isDayTable]", String.valueOf(false));
-        linkedMultiValueMap.add("flowOverride[kafkaTopic]", "cw_test_2019041101");
+        linkedMultiValueMap.add("flowOverride[kafkaTopic]", "cw_test_2019041801");
         String responseStr = restTemplate.postForObject(API + "/executor", linkedMultiValueMap, String.class);
         log.info("azkaban start flow:{}", responseStr);
         return JSON.parseObject(responseStr).get("execid").toString();
@@ -181,25 +199,27 @@ public class AzkabanTask {
      * @throws KeyManagementException
      * @throws NoSuchAlgorithmException
      */
-    private static String startFlow2(TaskInfo taskInfo) throws KeyManagementException, NoSuchAlgorithmException {
+    private static String startFlowHive2Local(TaskInfo taskInfo) throws KeyManagementException, NoSuchAlgorithmException {
         SSLUtil.turnOffSslChecking();
         LinkedMultiValueMap<String, Object> linkedMultiValueMap = new LinkedMultiValueMap<>();
         linkedMultiValueMap.add("session.id", AzkabanTask.SESSION_ID);
         linkedMultiValueMap.add("ajax", "executeFlow");
         linkedMultiValueMap.add("project", taskInfo.getProject());
         linkedMultiValueMap.add("flow", taskInfo.getFlowName());
-        linkedMultiValueMap.add("flowOverride[executeDate]", taskInfo.getExecuteDate());
-        linkedMultiValueMap.add("flowOverride[sourceTable]", taskInfo.getSourceTable());
+        linkedMultiValueMap.add("flowOverride[executeDate]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[sourceTable]", "default.wylt");
+        linkedMultiValueMap.add("flowOverride[taskId]", "1");
         //daily为日表，monthly为月表
-        linkedMultiValueMap.add("flowOverride[sourceDataField]", taskInfo.getSourceDateField());
-        linkedMultiValueMap.add("flowOverride[isFullSync]", String.valueOf(taskInfo.isFullSync()));
-        linkedMultiValueMap.add("flowOverride[selectClause]", taskInfo.getSelectClause());
-        linkedMultiValueMap.add("flowOverride[whereClause]", taskInfo.getWhereClause());
-        linkedMultiValueMap.add("flowOverride[isDayTable]", String.valueOf(taskInfo.isDayTable()));
-        linkedMultiValueMap.add("flowOverride[ftpFilePath]", taskInfo.getFtpFilePath());
-        Map postForObject = restTemplate.postForObject(API + "/executor", linkedMultiValueMap, Map.class);
-        log.info("azkaban start flow:{}", postForObject);
-        return postForObject.get("execid").toString();
+        linkedMultiValueMap.add("flowOverride[sourceDataField]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[sourceDataField]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[isFullSync]", String.valueOf(true));
+        linkedMultiValueMap.add("flowOverride[selectClause]", "*");
+        linkedMultiValueMap.add("flowOverride[whereClause]", "DSG_PARAM_EMPTY_VALUE");
+        linkedMultiValueMap.add("flowOverride[isDayTable]", String.valueOf(false));
+        linkedMultiValueMap.add("flowOverride[ftpFilePath]", "/test20190418");
+        String responseStr = restTemplate.postForObject(API + "/executor", linkedMultiValueMap, String.class);
+        log.info("azkaban start flow:{}", responseStr);
+        return JSON.parseObject(responseStr).get("execid").toString();
     }
 
 }

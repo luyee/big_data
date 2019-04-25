@@ -20,9 +20,9 @@ public class Consumer {
         props.put("auto.offset.reset","earliest");
         //offsets.storage=kafka and dual.commit.enabled=true in your consumer config
 //        props.put("offsets.storage","zookeeper");
-        props.put("enable.auto.commit","false");
+        props.put("enable.auto.commit","true");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(Arrays.asList("cw_test_2019041101"));
+        consumer.subscribe(Arrays.asList("cw_test_2019041801"));
 
         try {
             while (true) {
