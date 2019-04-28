@@ -16,7 +16,11 @@ object Test {
 //    calendar.add(Calendar.MONTH,1)
 //    dataSyncDay = format.format(calendar.getTime).substring(0,6)
 //    println(dataSyncDay)
-    val strings = "asdasda".split("\\.")
-    println(strings)
+//    val strings = "asdasda".split("\\.")
+//    println(strings)
+    val str = "dasdasd.adasd"
+    val strings = str.split("\\.")
+    val strings1 = str.split(',')
+    strings.foreach(println(_))
   }
 }

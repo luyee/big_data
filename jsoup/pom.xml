@@ -11,7 +11,6 @@
 
     <artifactId>jsoup</artifactId>
 
-    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -34,5 +33,4 @@
         </dependency>
 
     </dependencies>
-    </dependencyManagement>
 </project>
